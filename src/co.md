@@ -111,7 +111,7 @@ function co(gen){
 }
 ````
 
-####　异步终极解决方案(async await)
+#### 异步终极解决方案(async await)
 
 ````javascript
 (async function () {

@@ -12,3 +12,12 @@ function* gen2() {
 for (var i of gen2()) {
     console.log(i); // 12345
 }
+
+(async function () {
+    let b = await new Promise(function(resolve, reject){
+        setTimeout(_ => {
+            resolve(4);
+        })
+    })
+    console.log(b)
+})()

@@ -1,6 +1,6 @@
-### THUNK函数(分步骤执行)
+### thunk函数(分步骤执行)
 
-传统版本带callback的异步操作
+传统版本带callBack的异步操作
 
 ````javascript
 //read file

@@ -6,4 +6,4 @@
 
 [THUNK函数]https://github.com/XingguoHu/note/blob/master/src/thunk.md
 
-[GENERATOR]https://github.com/XingguoHu/note/blob/master/src/generator.md
+[generator]https://github.com/XingguoHu/note/blob/master/src/generator.md

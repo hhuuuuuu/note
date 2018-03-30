@@ -1,4 +1,4 @@
-### thunk函数(分步骤执行)
+# thunk函数(分步骤执行)
 
 传统版本带callBack的异步操作
 
@@ -21,7 +21,7 @@ readFileThunk(fileName)(callBack);
 
 简单版thunk转换器
 
-````javascript 
+````javascript
 //fn 需要转化的函数
 function thunk (fn){
     return function(){

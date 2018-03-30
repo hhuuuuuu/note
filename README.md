@@ -1,8 +1,8 @@
-### 个人笔记
+# 个人笔记
 
-![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
+![note](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 
-#### javascript
+## javascript
 
 [thunk函数](https://github.com/XingguoHu/note/blob/master/src/thunk.md)
 

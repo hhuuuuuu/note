@@ -14,7 +14,7 @@ for (var i of gen2()) {
 }
 
 (async function () {
-    let b = await new Promise(function(resolve, reject){
+    let b = await new Promise(function (resolve, reject) {
         setTimeout(_ => {
             resolve(4);
         })

@@ -1,8 +1,8 @@
-#### co
+# co
 
 回调地狱
 
-````javascript 
+````javascript
 fs.readdir(source, function (err, files) {
   if (err) {
     console.log('Error finding files: ' + err)
@@ -44,7 +44,6 @@ ajax().then(res=>{
 co
 
 ````javascript
-
 co(function*(){
     let a = yield g1();
     //do something with a
@@ -111,7 +110,7 @@ function co(gen){
 }
 ````
 
-#### 异步终极解决方案(async await)
+# 异步终极解决方案(async await)
 
 ````javascript
 (async function () {

@@ -11,3 +11,9 @@
 [promise实现](https://github.com/XingguoHu/Promise/blob/master/index.js)
 
 [co && async await](https://github.com/XingguoHu/note/blob/master/src/co.md)
+
+## config
+
+[eslint](https://github.com/XingguoHu/note/blob/master/src/eslint.md)
+
+[vscode](https://github.com/XingguoHu/note/blob/master/src/vscode.md)

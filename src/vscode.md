@@ -1,4 +1,6 @@
-````javascript  
+# vscode config
+
+````javascript
 {
     "workbench.startupEditor": "newUntitledFile",
     "atomKeymap.promptV3Features": true,

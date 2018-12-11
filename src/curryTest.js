@@ -16,7 +16,7 @@ var split = curry(function (what, x) {
 var words = function (str) {
     return split(' ', str);
 };
-
+``
 var words = split('')
 
 

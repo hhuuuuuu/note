@@ -30,13 +30,11 @@ const proxyObj = new Proxy(obj, {
     },
 })
 
-
 console.log(obj.a) // 1
-console.log(obj.b) // undefined
+console.log(obj.b) // undefined
 
 console.log(proxyObj.a) // 1
 console.log(proxyObj.b) // 0
-
 
 proxyObj.a = 666
 console.log(proxyObj.a) // 888

@@ -2,13 +2,13 @@
 
 ## 前言
 
- 在今年的 VueConf TO 2018 大会上，尤雨溪发表了 Vue3.0 的主题演讲，对 Vue3.0 的更新计划、方向进行了详细阐述，并且表示在 Vue3.0 中将放弃原来使用的数据拦截方式 Object.defineProperty , 将采用更加完美的原生 Proxy。
+在今年的 VueConf TO 2018 大会上，尤雨溪发表了 Vue3.0 的主题演讲，对 Vue3.0 的更新计划、方向进行了详细阐述，并且表示在 Vue3.0 中将放弃原来使用的数据拦截方式 Object.defineProperty , 将采用更加完美的原生 Proxy。
 
 使用 Proxy 进行数据拦截将解决原来使用 Object.defineProperty 所存在的诸多限制：无法监听属性的添加和删除、数组索引和长度的变更，并可以支持 Map、Set、WeakMap 和 WeakSet！。以后就可以不使用 Vue.$set和Vue.$delete 了。
 
 我们下面来介绍一下什么是 Proxy 以及如何使用 Proxy 实现一个简单的 Vue 数据绑定。
 
-## 什么是 Proxy
+## 什么是 Proxy
 
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 上是这么描述的——Proxy 对象用于定义基本操作的自定义行为（如属性查找，赋值，枚举，函数调用等）。
 
@@ -58,7 +58,7 @@ const proxy = new Proxy(target, handler)
 target： 用 Proxy 包装的目标对象（可以是任何类型的对象，包括原生数组，函数，甚至另一个代理）。
 handler： 一个对象，其属性是当执行一个操作时定义代理的行为的函数。
 
- 上面就是 Proxy 的基本用法，但是要想 Proxy 起作用，我们就不能去操作原来对象的对象，也就是目标对象 target，必须针对的是 Proxy 实例进行操作，否则达不到预期的效果，以刚开始的例子来看，我们设置 get 方法后，试图继续从原对象 obj 中读取一个不存在的属性 b，结果依旧返回 undefined。但是我们从代理对象上读取时，不会再返回 undefined，而是返回了 0。
+上面就是 Proxy 的基本用法，但是要想 Proxy 起作用，我们就不能去操作原来对象的对象，也就是目标对象 target，必须针对的是 Proxy 实例进行操作，否则达不到预期的效果，以刚开始的例子来看，我们设置 get 方法后，试图继续从原对象 obj 中读取一个不存在的属性 b，结果依旧返回 undefined。但是我们从代理对象上读取时，不会再返回 undefined，而是返回了 0。
 
 我们还可以创建一个可以撤销的 Proxy 对象，这里就不展开说了，基本上和 new Proxy(target, handler)差不多。[Proxy.revocable](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/revocable)
 
@@ -68,7 +68,7 @@ Proxy.revocable(target, handler)
 
 下面我们对其中最重要的 handler 对象进行一下讲解。
 
-### handler （处理器对象用来自定义代理对象的各种可代理操作。）
+### handler （处理器对象用来自定义代理对象的各种可代理操作。）
 
 Proxy 目前提供了 13 种可代理操作，下面我对几个比较常用的 api 做一些归纳和整理，想要了解其他方法的可以自行去[查阅](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler) ：
 

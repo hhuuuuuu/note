@@ -2,7 +2,7 @@
 
 ## 前言
 
-在今年的 VueConf TO 2018 大会上，尤雨溪发表了 Vue3.0 的主题演讲，对 Vue3.0 的更新计划、方向进行了详细阐述，并且表示在 Vue3.0 中将放弃原来使用的数据拦截方式 Object.defineProperty , 将采用更加完美的原生 Proxy。
+在今年的 VueConf TO 2018 大会上，尤雨溪发表了 Vue3.0 的主题演讲，对 Vue3.0 的更新计划、方向进行了详细阐述，并且表示在 Vue3.0 中将放弃原来使用的数据拦截方式 Object.defineProperty , 将采用更加完美的原生 Proxy。
 
 使用 Proxy 进行数据拦截将解决原来使用 Object.defineProperty 所存在的诸多限制：无法监听属性的添加和删除、数组索引和长度的变更，并可以支持 Map、Set、WeakMap 和 WeakSet！。以后就可以不使用 Vue.$set和Vue.$delete 了。
 

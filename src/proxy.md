@@ -1,4 +1,4 @@
-#  初探 Vue3.0 中的 Proxy
+# 初探 Vue3.0 中的 Proxy
 
 ## 前言
 

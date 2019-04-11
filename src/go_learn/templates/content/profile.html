@@ -1,0 +1,76 @@
+{{define "content"}}
+
+<table>
+    <tr valign="top">
+        <td><img src="{{.ProfileUser.Avatar}}&s=128"></td>
+        <td>
+            <h1>User: {{.ProfileUser.Username}}</h1>
+            {{if .ProfileUser.AboutMe}}
+            <p>
+                <pre>{{ .ProfileUser.AboutMe }}</pre>
+            </p>
+            {{end}}
+
+            {{if .ProfileUser.LastSeen}}
+            <p>Last seen on: {{ .ProfileUser.LastSeen }}</p>
+            {{end}}
+
+            <p>{{ .FollowersCount }} followers, {{ .FollowingCount }} following.</p>
+
+            {{if .Editable}}
+            <p><a href="/profile_edit">Edit your profile</a></p>
+            {{else}}
+            {{if .IsFollow}}
+            <p><a class="btn btn-outline-primary" href="/unfollow/{{.ProfileUser.Username}}">Unfollow</a></p>
+            {{else}}
+            <p><a class="btn btn-outline-primary" href="/follow/{{.ProfileUser.Username}}">Follow</a></p>
+            {{end}}
+            {{end}}
+        </td>
+    </tr>
+</table>
+
+<hr />
+
+{{range .Posts}}
+<table class="table table-hover">
+    <tr valign="top">
+        <td width="36px"><img src="{{.User.Avatar}}&s=36"></td>
+        <td><a href="/user/{{.User.Username}}">{{ .User.Username }}</a> says:<br>{{ .Body }}</td>
+    </tr>
+</table>
+{{end}}
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        {{ if gt .PrevPage 0 }}
+        <li class="page-item">
+            <a href="/user/{{.ProfileUser.Username}}?page={{.PrevPage}}">
+                <span class="page-link" aria-hidden="true">&larr; Newer Posts</span>
+            </a>
+        </li>
+        {{ else }}
+        <li class="page-item disabled">
+            <a href="#">
+                <span class="page-link" aria-hidden="true">&larr; Newer Posts</span>
+            </a>
+        </li>
+        {{ end }}
+        {{ if gt .NextPage 0 }}
+        <li class="page-item">
+            <a href="/user/{{.ProfileUser.Username}}?page={{.NextPage}}">
+                <span class="page-link" aria-hidden="true">Older Posts &rarr;</span>
+            </a>
+        </li>
+        {{ else }}
+        <li class="page-item disabled">
+            <a href="#">
+                <span class="page-link" aria-hidden="true">Older Posts &rarr;</span>
+            </a>
+        </li>
+        {{ end }}
+
+    </ul>
+</nav>
+
+{{end}}

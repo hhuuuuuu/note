@@ -1,0 +1,57 @@
+{{define "content"}}
+<h1>Hello, {{.CurrentUser}}!</h1>
+
+<form action="/" method="post">
+
+    <p><textarea class="form-control" name="body" rows="3" cols="80" value="" placeholder="say something..."></textarea></p>
+    <p><input class="btn btn-outline-primary" type="submit" name="submit" value="Post"></p>
+
+    {{ if .Flash }}
+    <span style="color: red;">[{{.Flash}}]</span>
+    {{ end }}
+</form>
+
+
+{{range .Posts}}
+<table class="table table-hover">
+    <tr valign="top">
+        <td width="36px"><img src="{{.User.Avatar}}&s=36"></td>
+        <td><a href="/user/{{.User.Username}}">{{ .User.Username }}</a> says:<br>{{ .Body }}</td>
+    </tr>
+</table>
+{{end}}
+
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        {{ if gt .PrevPage 0 }}
+        <li class="page-item">
+            <a href="/?page={{.PrevPage}}">
+                <span class="page-link" aria-hidden="true">&larr; Newer Posts</span>
+            </a>
+        </li>
+        {{ else }}
+        <li class="page-item disabled">
+            <a href="#">
+                <span class="page-link" aria-hidden="true">&larr; Newer Posts</span>
+            </a>
+        </li>
+        {{ end }}
+
+        {{ if gt .NextPage 0 }}
+        <li class="page-item">
+            <a href="/?page={{.NextPage}}">
+                <span class="page-link" aria-hidden="true">Older Posts &rarr;</span>
+            </a>
+        </li>
+        {{ else }}
+        <li class="page-item disabled">
+            <a href="#">
+                <span class="page-link" aria-hidden="true">Older Posts &rarr;</span>
+            </a>
+        </li>
+        {{ end }}
+
+    </ul>
+</nav>
+{{end}}

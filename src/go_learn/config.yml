@@ -1,0 +1,11 @@
+mysql:
+    charset: utf8
+    db: goMega
+    host: localhost
+    password: 123456
+    user: root
+mail:
+    smtp: smtp-server
+    smtp-port: 587
+    user: user
+    password: pwd

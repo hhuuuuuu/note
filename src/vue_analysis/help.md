@@ -2,6 +2,8 @@
 # vue构造函数上的属性
 
 ````javascript
+// _ 为私有属性
+// $ 为共有属性
 
 {
     // ref https://github.com/vuejs/vue/blob/dev/src/core/index.js
@@ -24,6 +26,86 @@
         },
         // ref https://github.com/vuejs/vue/blob/dev/src/core/instance/init.js
         _init,
+        _isVue,
+        _uid,
+        _renderProxy: this,
+        _self: this,
+        $children: [vm]
+        $parent: vm// from options parent
+        $root: parent ? parent.$root : vm,
+        $refs: {},
+        _watcher: null,
+        _watchers: [],
+        _inactive: null,
+        _directInactive: false,
+        _isMounted: false,
+        _isDestroyed: false,
+        _isBeingDestroyed: false,
+        _events: {
+            key: [fn]
+        },
+        _hasHookEvent: hookRE.test(event),
+        _vnode: null, // the root of the child tree
+        _staticTrees: null, // v-once cached trees
+        $vnode: this.options._parentVnode, // the placeholder node in parent tree
+        $slots: {
+            key: [vnode]
+        },
+        $scopedSlots: emptyObject,
+        _c, // 用于模板
+        $createElement, // 用于render 函数,
+        $attrs: this.$vnode.data.attrs, // 响应式 非deep
+        $listeners: this.options._parentListeners, // 响应式 非deep
+        _computedWatchers: [watcher],
+        _provided: $options.provide.call(this) || $options.provide
+        $options: {
+           render: (vm._renderProxy, vm.$createElement) => vnode, // render函数  
+           _praentVnode: {
+               data: {
+                   scopedSlots
+               }
+           },
+           props: {
+                key: {
+                    type,
+                    default?,
+                    required?
+                }
+           },
+           inject: {
+               key: {
+                   from,
+                   default?
+               }
+           }, // 最终将每一个key赋值到实例上，并且为响应式, 但不是deep。
+           direactives: {
+               key: {
+                    bind,
+                    update,
+                    inserted?,
+                    componentUpdated?,
+                    unbind?
+                }
+           },
+           el, // 子组件
+           propsData // 子组件,
+           data: () => {} || {},
+           hook: []  // [  'beforeCreate','created', 'beforeMount','mounted','beforeUpdate', 'updated','beforeDestroy','destroyed','activated','deactivated','errorCaptured']
+            components,
+            filter,
+            watch: {key: function | Array<function>},
+            methods,
+            computed,
+            parent,
+            _parentVnode,
+            propsData, // vnodeComponentOptions.propsData
+            _parentListeners, // vnodeComponentOptions.listeners
+            _renderChildren, // vnodeComponentOptions.children
+            _componentTag // vnodeComponentOptions.tag
+            _base: vue,
+            ...rest,
+        },
+
         // ref https://github.com/vuejs/vue/blob/dev/src/core/instance/state.js
         $data: {
             get() {
@@ -37,6 +119,18 @@
                 )
             }
         },
+        _data: {
+            ___ob__: observer,
+            key: {
+                __ob__: observer
+            } || simapleValue || [{__ob__: observer}]
+        }, // 响应式deep 属性代理
+        _props: {
+            key: {
+                __ob__: observer
+            } || simapleValue || [{__ob__: observer}]
+        }, // 响应式deep 属性代理
+        _propKeys: [],
         $props: {
             get() {
                 return this._props
@@ -53,6 +147,7 @@
         $once,
         $off,
         $emit,
+        // ref https://github.com/vuejs/vue/blob/dev/src/core/instance/lifecycle.js
         _update,
         $forceUpdate,
         $destory,
@@ -143,6 +238,7 @@
         */
         _lifecycleHooks: LIFECYCLE_HOOKS
     },
+    // 参考实例$options
     options: {
         directives: {
             model, show
